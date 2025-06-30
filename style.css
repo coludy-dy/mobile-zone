@@ -121,10 +121,12 @@ header .navbar{
     color:var(--white-color);
     transition: 0.3s ease;
 }
-.navbar .nav-menu .nav-link:hover{
-    color:var(--primary-color);
-    background: var(--secondary-color);    
+.navbar .nav-menu .nav-link:hover,
+.navbar .nav-menu .nav-link.active {
+    color: var(--primary-color);
+    background: var(--secondary-color);
 }
+
 .hero-section{
     /*min-height: 100vh;*/
     background: var(--primary-color);
@@ -249,9 +251,9 @@ header .navbar{
     text-align: center;
     margin: 0 auto;
 }
-.head h1{
-    font-size: var(--font-size-xl);
-    margin-top: 20px auto;
+.heading .head h1{
+    font-size: large;
+    margin-top: 50px auto;
     margin-bottom: 20px;
     position: relative;
 }
@@ -310,15 +312,16 @@ header .navbar{
 .about-content .readmore{
     display: inline-block;
     padding: 10px 20px;
-    color:black;
+    color:#fff;
     font-size: 19px;
     text-decoration: none;
     border-radius: 25px;
     margin-top: 15px;
     transition: 0.5s ease;
+    background-color:var(--secondary-color);
 }
 .about-content .readmore:hover{
-    background-color: var(--secondary-color);
+    background-color:green;
 
 }
 /*-------contact------*/
@@ -379,8 +382,9 @@ header .navbar{
     font-weight: 300;
 }
 .container .contactinfo .box .text h4{
-    margin-left: 30px;
-    font-weight: 500;
+    margin-left: 0px;
+    font-weight: bold;
+    font-size: large;
     color: var(--secondary-color);
 }
 .contactform{
@@ -916,3 +920,199 @@ body {
     margin-top: 10px;
   }
 }
+/*-------- User Register-------*/
+.register {
+  padding-top: 120px; /* Adjust based on your navbar height */
+  background: var(--primary-color);
+  min-height: 100vh;
+}
+.wrapp {
+  max-width: 900px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 30px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  border-radius: 10px;
+}
+
+form h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-columns {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.left-column,
+.right-column {
+  flex: 1;
+  min-width: 280px;
+}
+
+.inputting {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.inputting input {
+  width: 100%;
+  padding: 12px 40px 12px 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.inputting i {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #555;
+}
+
+.remember-forget {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.remember-forget p {
+  margin: 0 5px;
+}
+
+.btn {
+  width: 100%;
+  padding: 12px;
+  background-color:var(--secondary-color);
+  border: none;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color:green;
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.register-link a {
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .form-columns {
+    flex-direction: column;
+  }
+
+  .wrap {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  .remember-forget {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .btn {
+    font-size: 14px;
+  }
+}
+/*---------Nav Search bar------*/
+.nav-search {
+  position: relative;
+}
+
+.search-input {
+  padding: 8px 12px 8px 36px; /* leave space for icon */
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 200px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  border-color:var(--secondary-color);
+  box-shadow: 0 0 3px rgba(0, 123, 255, 0.3);
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+  pointer-events: none;
+  font-size: 14px;
+}
+/* Responsive navbar and search input */
+@media (max-width: 768px) {
+  header .navbar {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  /* Make nav-menu vertical and centered */
+  .navbar .nav-menu {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Make nav links full width on small screens */
+  .navbar .nav-menu .nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 12px 0;
+    border-radius: 0;
+  }
+
+  /* Center search bar and expand width */
+  .nav-search {
+    width: 100%;
+    max-width: 400px;
+    margin: 10px auto;
+  }
+
+  .search-input {
+    width: 100%;
+    font-size: 16px;
+  }
+}
+
+/* Extra small screens (phones) */
+@media (max-width: 480px) {
+  /* Stack logo and search */
+  .nav-left {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  /* Shrink search input a bit */
+  .search-input {
+    max-width: 100%;
+    padding-left: 36px; /* keep icon padding */
+  }
+}
+

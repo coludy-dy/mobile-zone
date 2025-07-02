@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css" integrity="sha384-NvKbDTEnL+A8F/AA5Tc5kmMLSJHUO868P+lDtTpJIeQdGYaUIuLr4lVGOEA1OcMy" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Products</title>
+</head>
+<body>
+    <header>
+    <div class="navbar section-content">
+        <a href="index.html" class="nav-logo">
+            <h2 class="logo-text"><i class="fa-solid fa-mobile-retro"></i>Mobile Zone</h2>
+        </a>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="pro.html" class="nav-link">Products</a>
+            </li>
+            <li class="nav-item">
+                <a href="about.html" class="nav-link ">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a href="contact.html" class="nav-link">Contact Us</a>
+            </li>
+            <li class="nav-item">
+                <a href="add-to-cart.html" class="nav-link nav-cart active"><i class="fas fa-shopping-cart"></i> Cart</a>
+            </li>
+        </ul>
+        <!-- Search Bar (icon inside input) 
+                    <div class="nav-search">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="search" class="search-input" placeholder="Search...">
+                    </div>--->
+
+                <div class="nav-login">
+                    <a href="login.html" class="nav-link nav-login-btn"><i class="fas fa-sign-in-alt"></i> Login</a>
+                </div>
+    </div>
+   </header>
+    <section class="cart-section">
+        <div class="cart-container">
+            <h2><i class="fas fa-shopping-cart"></i> Your Cart</h2>
+            
+            <div class="cart-item">
+                <img src="img/pink.png" alt="Product" class="cart-img">
+                <div class="cart-details">
+                    <h3>IPhone 16 Pro Series</h3>
+                    <p>128GB / Silver</p>
+                        <div class="cart-qty">
+                        <button>-</button>
+                        <span>1</span>
+                        <button>+</button>
+                        </div>
+                </div>
+                <div class="cart-price">
+                    <p>4,130,000 MMK</p>
+                    <button class="remove-btn"><i class="fas fa-trash"></i></button>
+                </div>
+            </div>
+
+        <!-- Add more .cart-item blocks for other products -->
+
+            <div class="cart-summary">
+                <h3>Total: <span>4,130,000 MMK</span></h3>
+                <button class="checkout-btn">Proceed to Checkout</button>
+            </div>
+    </div>
+    </section>
+</body>
+</html>

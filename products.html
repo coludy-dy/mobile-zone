@@ -19,7 +19,7 @@
                 <a href="index.html" class="nav-link">Home</a>
             </li>
             <li class="nav-item">
-                <a href="products.html" class="nav-link">Products</a>
+                <a href="products.html" class="nav-link active">Products</a>
             </li>
             <li class="nav-item">
                 <a href="about.html" class="nav-link">About Us</a>
@@ -28,28 +28,32 @@
                 <a href="contact.html" class="nav-link">Contact Us</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link nav-cart"><i class="fas fa-shopping-cart"></i>Cart</a>
+                <a href="add-to-cart.html" class="nav-link nav-cart"><i class="fas fa-shopping-cart"></i>Cart</a>
             </li>
         </ul>
-        <!-- Search Bar (icon inside input) -->
+        <!-- Search Bar (icon inside input) 
                     <div class="nav-search">
                     <i class="fas fa-search search-icon"></i>
                     <input type="search" class="search-input" placeholder="Search...">
-                    </div>
+                    </div>-->
 
                 <div class="nav-login">
                     <a href="login.html" class="nav-link nav-login-btn"><i class="fas fa-sign-in-alt"></i> Login</a>
                 </div>
     </div>
-   </header>
    <!------------------Production Section Starts----------------->
 <!-------IPhone 16--------->
 
 <section id="products">
     <section class="product">
-        <div class="section-content">
-        <h2 class="section-title"><i class="fas fa-box-open"></i> Our Products</h2>
-        </div>
+            <div class="section-content flex-center-column">
+                <h2 class="section-title"><i class="fas fa-box-open"></i> Our Products</h2>
+                <div class="product-search">
+                    <i class="fas fa-search search-icon"></i>
+                    <input type="search" class="search-input" placeholder="Search products...">
+                </div>
+            </div>
+
         <div class="contain flex">
             <div class="left">
                 <div class="main-image">
@@ -303,6 +307,17 @@
             }
 }
 </script>
+<script>
+function toggleSidebar() {
+  const sidebar = document.getElementById("sideNav");
+  if (sidebar.style.left === "0px") {
+    sidebar.style.left = "-250px";
+  } else {
+    sidebar.style.left = "0px";
+  }
+}</script>
+
+
 
 </body>
 </html>

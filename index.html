@@ -11,32 +11,51 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<section id="index">
     <header>
-        <div class="navbar section-content">
-            <a href="#index" class="nav-logo">
-                <h2 class="logo-text"><i class="fa-solid fa-mobile-retro" style="margin-right: 8px;"></i>Mobile Zone</h2>
-            </a>
-                <ul class="nav-menu">
-                    <li class="nav-item"><a href="index.html" class="nav-link active">Home</a></li>
-                    <li class="nav-item"><a href="pro.html" class="nav-link">Products</a></li>
-                    <li class="nav-item"><a href="about.html" class="nav-link">About Us</a></li>
-                    <li class="nav-item"><a href="contact.html" class="nav-link">Contact Us</a></li>
-                    <li class="nav-item">
-                        <a href="add-to-cart.html" class="nav-link nav-cart "><i class="fas fa-shopping-cart"></i> Cart</a>
-                    </li>
-                </ul>
-                <!-- Search Bar (icon inside input) 
+        <!-- Topbar -->
+            <div class="topbar">
+            <div class="topbar-left">
+                <span><i class="fas fa-envelope"></i> support@mobilezone.com</span>
+                <span><i class="fas fa-phone-alt"></i> +95 123 456 789</span>
+                <span><i class="fas fa-map-marker-alt"></i> Yangon, Myanmar</span>
+            </div>
+            <div class="topbar-right">
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            </div>
+    <div class="navbar section-content">
+        <a href="index.html" class="nav-logo">
+            <h2 class="logo-text"><i class="fa-solid fa-mobile-retro"></i>Mobile Zone</h2>
+        </a>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="index.html" class="nav-link active">Home</a>
+            </li>
+            <li class="nav-item">
+                <a href="pro.html" class="nav-link">Products</a>
+            </li>
+            <li class="nav-item">
+                <a href="about.html" class="nav-link">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a href="contact.html" class="nav-link">Contact Us</a>
+            </li>
+            <li class="nav-item">
+                <a href="add-to-cart.html" class="nav-link nav-cart"><i class="fas fa-shopping-cart"></i> Cart</a>
+            </li>
+        </ul>
+        <!-- Search Bar (icon inside input) 
                     <div class="nav-search">
                     <i class="fas fa-search search-icon"></i>
                     <input type="search" class="search-input" placeholder="Search...">
-                    </div>-->
+                    </div>--->
 
                 <div class="nav-login">
                     <a href="login.html" class="nav-link nav-login-btn"><i class="fas fa-sign-in-alt"></i> Login</a>
                 </div>
-        </div>
-    </header>
+    </div>
+   </header>
     <section class="hero-section">
             <div class="section-content">
                 <div class="hero-detail">
@@ -127,7 +146,6 @@
             </div>
         </section>
     </section> 
-</section>
 <!------------------Production Section Starts----------------->
 <!-------IPhone 16--------->
 
@@ -135,6 +153,23 @@
     <section class="product">
         <div class="section-content">
         <h2 class="section-title"><i class="fas fa-box-open"></i> Our Products</h2>
+         <div class="filters-row">
+        <div class="brand-select">
+            <select id="brandFilter" onchange="filterBrand(this.value)">
+                <option value="all">All Brands</option>
+                <option value="iphone">iPhone</option>
+                <option value="samsung">Samsung</option>
+                <option value="vivo">Vivo</option>
+                <option value="oppo">Oppo</option>
+                <option value="xiaomi">Xiaomi</option>
+            </select>
+        </div>
+        <div class="product-search">
+            <i class="fas fa-search search-icon"></i>
+            <input type="search" class="search-input" placeholder="Search products...">
+        </div>
+    </div>
+</div>
         </div>
         <div class="contain flex">
             <div class="left">

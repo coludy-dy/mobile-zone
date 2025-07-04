@@ -8,7 +8,20 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css" integrity="sha384-NvKbDTEnL+A8F/AA5Tc5kmMLSJHUO868P+lDtTpJIeQdGYaUIuLr4lVGOEA1OcMy" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 </head>
-<body><header>
+<body>
+    <header>
+        <!-- Topbar -->
+            <div class="topbar">
+            <div class="topbar-left">
+                <span><i class="fas fa-envelope"></i> support@mobilezone.com</span>
+                <span><i class="fas fa-phone-alt"></i> +95 123 456 789</span>
+                <span><i class="fas fa-map-marker-alt"></i> Yangon, Myanmar</span>
+            </div>
+            <div class="topbar-right">
+                <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+            </div>
     <div class="navbar section-content">
         <a href="index.html" class="nav-logo">
             <h2 class="logo-text"><i class="fa-solid fa-mobile-retro"></i>Mobile Zone</h2>
@@ -41,32 +54,30 @@
 
     </div>
    </header>
-  <div class="admin-container">
-    <!-- Sidebar -->
-
-    ---
-    <aside class="sidebar">
-      <ul class="sidebar-menu">
-        <li><a href="pro.html" class="active">Iphone</a></li>
-        <li><a href="#">Samsung</a></li>
-        <li><a href="#"></i>Vivo</a></li>
-        <li><a href="#">Xiaomi</a></li>
-        <li><a href="#">Oppo</a></li>
-      </ul>
-    </aside>
-
-    <!-- Main Content -->
-    <main class="main-content">
       <section id="products">
     <section class="product">
-            <div class="section-content flex-center-column">
-                <h2 class="section-title"><i class="fas fa-box-open"></i> Our Products</h2>
-                <div class="product-search">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="search" class="search-input" placeholder="Search products...">
-                </div>
-            </div>
+           <div class="section-content">
+    <h2 class="section-title"><i class="fas fa-box-open"></i> Our Products</h2>
+    
+    <div class="filters-row">
+        <div class="brand-select">
+            <select id="brandFilter" onchange="filterBrand(this.value)">
+                <option value="all">All Brands</option>
+                <option value="iphone">iPhone</option>
+                <option value="samsung">Samsung</option>
+                <option value="vivo">Vivo</option>
+                <option value="oppo">Oppo</option>
+                <option value="xiaomi">Xiaomi</option>
+            </select>
+        </div>
+        <div class="product-search">
+            <i class="fas fa-search search-icon"></i>
+            <input type="search" class="search-input" placeholder="Search products...">
+        </div>
+    </div>
+</div>
 
+    <section class="product" data-brand="iphone">
         <div class="contain flex">
             <div class="left">
                 <div class="main-image">
@@ -121,7 +132,7 @@
 
     <!-- Vivo Section -->
 
-    <section class="product">
+    <section class="product" data-brand="vivo">
         <div class="contain flex">
             <div class="left">
                 <div class="main-image">
@@ -179,7 +190,7 @@
 
     <!-- Samsung Section -->
 
-    <section class="product">
+    <section class="product" data-brand="samsung">
         <div class="contain flex">
             <div class="left">
                 <div class="main-image">
@@ -237,7 +248,7 @@
 
     <!-- Xiaomi Section -->
 
-    <section class="product">
+    <section class="product" data-brand="xiaomi">
         <div class="contain flex">
             <div class="left">
                 <div class="main-image">
@@ -328,16 +339,21 @@ function toggleSidebar() {
   } else {
     sidebar.style.left = "0px";
   }
-}</script>
-<script>
-function toggleSidebar() {
-  const sidebar = document.querySelector('.sidebar');
-  sidebar.classList.toggle('open');
 }
 </script>
 
-  
-    </main>
-  </div>
+  <script>
+  function filterBrand(brand) {
+    const products = document.querySelectorAll('.product');
+    products.forEach(product => {
+      const currentBrand = product.getAttribute('data-brand');
+      if (brand === 'all' || currentBrand === brand) {
+        product.style.display = 'block';
+      } else {
+        product.style.display = 'none';
+      }
+    });
+  }
+</script>
 </body>
 </html>

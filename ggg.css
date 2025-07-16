@@ -9,6 +9,7 @@ body {
   font-family: 'Poppins', sans-serif;
   line-height: 1.6;
   background-color: var(--primary-color);
+  padding-top: 100px;
 }
 
 img {
@@ -27,12 +28,16 @@ img {
 /* ============================================ Home Page =============================================== */
 /* ========== TOPBAR ========== */
 .topbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
   background-color:rgb(130, 209, 130);
   display: flex;
   justify-content: space-between;
   padding: 0.5rem 1rem;
   flex-wrap: wrap;
   font-size: 0.9rem;
+  z-index: 1000;
 }
 
 .topbar-left span {
@@ -46,13 +51,15 @@ img {
 
 /* ========== NAVBAR ========== */
 .navbar {
+  position: fixed;
+  top: 35px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
   flex-wrap: wrap;
   background-color:var(--primary-color);
-  border-bottom: 1px solid #ddd;
 }
 
 .nav-menu {
@@ -60,18 +67,22 @@ img {
   gap: 1rem;
   flex-wrap: wrap;
   list-style: none;
-  margin: 0;
-  padding: 0;
 }
-
 .nav-logo {
   text-decoration: none;
-  color:var(--secondary-color);
+  color: var(--secondary-color);
+  margin-left: 70px;
 }
 
 .nav-menu .nav-link {
   text-decoration: none;
   color: white;
+}
+.logo-text {
+  color: var(--secondary-color); /* pink */
+  font-size: 26px;
+  font-weight: 600;
+  white-space: nowrap;
 }
 
 .button.order-now {
@@ -97,11 +108,13 @@ img {
   color: inherit; /* keep whatever color it has */
 }
 
+
 .nav-login-btn {
-  background-color: var(--primary-color);
-  color:var(--secondary-color);
-  padding: 0.5rem 1rem;
-  border-radius: 5px;
+    padding: 10px 18px;
+    border-radius:20px;
+    color:var(--secondary-color);
+    transition: 0.3s ease;
+    margin-right: 60px;
 }
 
 .navbar .nav-menu .nav-link:hover,
@@ -110,10 +123,15 @@ img {
     background: var(--secondary-color);
 }
 .navbar .nav-menu .nav-link{
-    padding: 10px 18px;
+    padding: 15px 15px;
     border-radius:20px;
     color:var(--secondary-color);
     transition: 0.3s ease;
+}
+.nav-login-btn:hover,
+.nav-login-btn.active{
+   color: var(--primary-color);
+    background: var(--secondary-color);
 }
 
 /* ========== HERO SECTION ========== */
@@ -128,7 +146,7 @@ img {
 
 .hero-detail {
   flex: 1 1 300px;
-  padding: 1rem;
+  margin-left: 70px;
 }
 
 .hero-image-wrapper {
@@ -140,22 +158,23 @@ img {
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem 1rem;
+  gap: 3rem;
+  padding: 2rem 3rem;
   background: var(--primary-color);
 }
-
 .product-card {
   background:#fff;
-  border: 2px solid var(--secondary-color);
-  padding: 1rem;
+  box-shadow: 6px 6px 8px rgba(16, 0, 0, 0.7);
+  padding: 2rem 2rem;
   border-radius: 8px;
   text-align: center;
+  justify-content: center;
 }
 
 .product-card .product-image {
   max-height: 200px;
   object-fit: contain;
+  justify-content: center;
 }
 
 .button.small {
@@ -175,9 +194,61 @@ img {
   margin: 2rem 0 1rem;
   background: var(--primary-color);
 }
+#scroll-buttons {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+#scroll-up{
+  background-color: var(--secondary-color); /* Pink tone */
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  padding: 12px;
+  font-size: 18px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s, transform 0.3s;
+}
+
+#scroll-up:hover {
+  background-color: var(--secondary-color);
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 768px) {
+  #scroll-up {
+    padding: 10px;
+    font-size: 16px;
+    bottom: 15px;
+    right: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #scroll-up {
+    padding: 8px;
+    font-size: 14px;
+    bottom: 10px;
+    right: 10px;
+  }
+}
 
 /* ========== RESPONSIVE ========== */
 @media (max-width: 768px) {
+   .navbar .nav-menu .nav-link {
+        padding: 8px 14px;
+        font-size: 15px;
+    }
+  .nav-logo {
+    margin-left: 20px;
+  }
+  .logo-text {
+    font-size: 20px;
+  }
+
   .nav-menu {
     flex-direction: column;
     gap: 0.5rem;
@@ -245,8 +316,8 @@ img {
 /* ====== MAIN PRODUCT IMAGE ====== */
 .main-image img {
   width: 100%;
-  max-width: 320px;
-  height: auto;
+  max-width: 450px;
+  height: 500px;
   margin: 0 auto;
 }
 
@@ -261,7 +332,6 @@ img {
 .option img {
   width: 60px;
   height: 60px;
-  border: 1px solid #ccc;
   border-radius: 4px;
   cursor: pointer;
   object-fit: cover;
@@ -296,10 +366,26 @@ img {
 }
 
 /* ====== STORAGE OPTIONS ====== */
+.capacity-options {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+  flex-wrap: wrap; /* Optional: allows wrap on small screens */
+}
+
 .capacity-options label {
-  display: block;
-  margin: 0.5rem 0;
-  font-size: 0.95rem;
+  background: #f5f5f5;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.capacity-options input[type="radio"] {
+  accent-color: #007bff; /* Optional: styling the radio color */
 }
 
 /* ====== ADD/REMOVE NUMBER ====== */
@@ -503,18 +589,19 @@ button {
 .contactinfo .icon {
   font-size: 1.5rem;
   color: var(--secondary-color);
-  margin-top: 0.2rem;
+  margin-top: 0.8rem;
 }
 
 .contactinfo .text h4 {
   font-size: 1.1rem;
-  margin-bottom: 0.3rem;
+  margin: 0.8rem 0 0.2rem;
   color: #222;
 }
 
 .contactinfo .text p {
   font-size: 0.95rem;
   color: #555;
+  margin-top: 0.3rem;
 }
 
 /* ===== CONTACT FORM ===== */
@@ -663,23 +750,31 @@ button {
 .cart-qty {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 15px; /* spacing between buttons and number */
+  margin-top: 10px;
 }
 
 .cart-qty button {
-  width: 28px;
-  height: 28px;
-  border: none;
-  background-color: var(--secondary-color);
-  border-radius: 5px;
-  font-weight: bold;
+  padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
 }
 
 .cart-qty span {
-  min-width: 24px;
+  font-size: 16px;
+  min-width: 20px;
   text-align: center;
+  display: inline-block;
 }
+
+
+.cart-qty span {
+  font-size: 16px;
+  min-width: 20px;
+  text-align: center;
+  display: inline-block;
+}
+
 
 /* ==== CART PRICE & REMOVE ==== */
 .cart-price {
@@ -799,11 +894,11 @@ button {
   align-items: center;
   min-height: calc(100vh - 120px); /* account for header */
   padding: 20px;
-  background: #f0f0f0;
+  background:var(--primary-color);
 }
 
 .wrap {
-  background: var(--primary-color);
+  background: #fff;
   padding: 30px;
   max-width: 400px;
   width: 100%;

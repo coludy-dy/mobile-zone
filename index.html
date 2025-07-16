@@ -3,11 +3,10 @@
 <head>
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css" integrity="sha384-NvKbDTEnL+A8F/AA5Tc5kmMLSJHUO868P+lDtTpJIeQdGYaUIuLr4lVGOEA1OcMy" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile Zone</title>
+    <title>User| Mobile Zone</title>
     <link rel="stylesheet" href="ggg.css">
 </head>
 <body>
@@ -36,7 +35,7 @@
                 <a href="pro.html" class="nav-link">Products</a>
             </li>
             <li class="nav-item">
-                <a href="about.html" class="nav-link">About Us</a>
+                <a href="about.html" class="nav-link ">About Us</a>
             </li>
             <li class="nav-item">
                 <a href="contact.html" class="nav-link">Contact Us</a>
@@ -45,7 +44,6 @@
                 <a href="add-to-cart.html" class="nav-link nav-cart"><i class="fas fa-shopping-cart"></i> Cart</a>
             </li>
         </ul>
-
                 <div class="nav-login">
                     <a href="login.html" class="nav-link nav-login-btn"><i class="fas fa-sign-in-alt"></i> Login</a>
                 </div>
@@ -84,8 +82,8 @@
                 </div>
                 <!-- Product 2 -->
                 <div class="product-card">
-                    <img src="img/black.png" alt="Vivo S30" class="product-image">
-                    <h3 class="product-name">IPhone 16 Pro<h3>
+                    <img src="img/blue.png" alt="Vivo S30" class="product-image">
+                    <h3 class="product-name">IPhone 16 Pro</h3>
                     <p class="product-price">4,130,000 MMK</p>
                     <a href="pro.html" class="button small">View</a>
                 </div>
@@ -128,7 +126,7 @@
         </section>
     </section> 
 <!------------------Production Section Starts----------------->
-<!-------IPhone 16------
+<!-------IPhone 16------>
 
 <section id="product">
     <section class="product">
@@ -136,7 +134,7 @@
         <h2 class="section-title"><i class="fas fa-box-open"></i> Our Products</h2>
          <div class="filters-row">
         <div class="brand-select">
-            <select id="brandFilter" onchange="filterBrand(this.value)">
+            <select id="brandFilter"  onchange="filterAndScroll(this.value)">
                 <option value="all">All Brands</option>
                 <option value="iphone">iPhone</option>
                 <option value="samsung">Samsung</option>
@@ -152,6 +150,7 @@
     </div>
 </div>
         </div>
+        <section class="product" data-brand="iphone" id="iphone"></section>
         <div class="contain flex">
             <div class="left">
                 <div class="main-image">
@@ -199,14 +198,16 @@
                 </div>
                 <h5>Number</h5>
                 <div class="add flex1"><span>-</span><label>1</label><span>+</span></div>
-                <button>Add To Cart</button>
+                <form action="add-to-cart.html" method="get">
+                <button type="submit">Add To Cart</button>
+                </form>
             </div>
         </div>
     </section>
 
-     Vivo Section -
+<!------------------------------Vivo Section------------------------------------->      -
 
-    <section class="product">
+    <section class="product" data-brand="vivo" id="vivo">
         <div class="contain flex">
             <div class="left">
                 <div class="main-image">
@@ -257,14 +258,16 @@
                 </div>
                 <h5>Number</h5>
                 <div class="add flex1"><span>-</span><label>1</label><span>+</span></div>
-                <button>Add To Cart</button>
+                <form action="add-to-cart.html" method="get">
+                <button type="submit">Add To Cart</button>
+                </form>
             </div>
         </div>
     </section>
 
-    Samsung Section -
+ <!------------------------------------------Samsung Section ---------------------------------------------->   -
 
-    <section class="product">
+    <section class="product" data-brand="samsung" id="samsung">
         <div class="contain flex">
             <div class="left">
                 <div class="main-image">
@@ -315,14 +318,16 @@
                 </div>
                 <h5>Number</h5>
                 <div class="add flex1"><span>-</span><label>1</label><span>+</span></div>
-                <button>Add To Cart</button>
+                <form action="add-to-cart.html" method="get">
+                <button type="submit">Add To Cart</button>
+                </form>
             </div>
         </div>
     </section>
 
-     Xiaomi Section 
+   <!---------------------------------------Xiaomi section-------------------------------------->
 
-    <section class="product">
+    <section class="product" data-brand="xiaomi" id="xiaomi">
         <div class="contain flex">
             <div class="left">
                 <div class="main-image">
@@ -373,13 +378,14 @@
                 </div>
                 <h5>Number</h5>
                 <div class="add flex1"><span>-</span><label>1</label><span>+</span></div>
-                <button>Add To Cart</button>
+                <form action="add-to-cart.html" method="get">
+                <button type="submit">Add To Cart</button>
+                </form>
             </div>
         </div>
     </section>
-
-     JavaScript 
-
+</div>
+    <!---------------------------------------Java Script--------------------------------------->
     <script>
         function img(clickedImg) {
             const section = clickedImg.closest('.product');
@@ -405,8 +411,79 @@
             }
 }
 </script>
+<script>
+  document.querySelectorAll('.add').forEach(container => {
+    const label = container.querySelector('label');
+    let count = 1;
 
-   ------------------------About Us---------------------------------------------------------
+    container.children[0].addEventListener('click', () => {
+      if (count > 1) count--;
+      label.textContent = count;
+    });
+
+    container.children[2].addEventListener('click', () => {
+      count++;
+      label.textContent = count;
+    });
+  });
+</script>
+<script>
+function toggleSidebar() {
+  const sidebar = document.getElementById("sideNav");
+  if (sidebar.style.left === "0px") {
+    sidebar.style.left = "-250px";
+  } else {
+    sidebar.style.left = "0px";
+  }
+}
+</script>
+
+ <script>
+  function filterAndScroll(brand) {
+    const products = document.querySelectorAll('.product');
+
+    products.forEach(product => {
+      const currentBrand = product.getAttribute('data-brand');
+      if (brand === 'all' || currentBrand === brand) {
+        product.style.display = 'block';
+      } else {
+        product.style.display = 'none';
+      }
+    });
+
+    if (brand !== 'all') {
+      const section = document.getElementById(brand);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+</script>
+<script>
+    document.querySelector('.search-input').addEventListener('input', function () {
+  const searchTerm = this.value.toLowerCase().replace(/,/g, '').trim();
+  const products = document.querySelectorAll('.product');
+
+  products.forEach(product => {
+    const productName = product.querySelector('h3').textContent.toLowerCase();
+    // Get price text and remove commas and spaces for easy match
+    const priceText = product.querySelector('.price').textContent.replace(/,/g, '').trim();
+
+    if (
+      productName.includes(searchTerm) ||
+      priceText.includes(searchTerm)
+    ) {
+      product.style.display = 'block';
+    } else {
+      product.style.display = 'none';
+    }
+  });
+});
+</script>
+
+   <!------------------------About Us--------------------------------------------------------->
 
    <section id="abouts">
    <div class="abt">
@@ -430,7 +507,7 @@
         </div>
         </div>
         </section>
-   ----------------------------------------------Contact us-------------------------------
+   <!----------------------------------------------Contact us------------------------------->
    <section class="contact" id="contacts">
     <div class="content">
         <h2>Contact Us</h2>
@@ -481,7 +558,7 @@
        </div> 
     </div>
    </section>
-    Up and Down Arrow Buttons 
+    <!----------------------------Up and Down Arrow Buttons ---------------------------->
 <div id="scroll-buttons">
     <button id="scroll-up" title="Go to Top"><i class="fas fa-chevron-up"></i></button>
    
@@ -498,13 +575,13 @@
     });
 
     // Scroll to bottom
-   /*document.getElementById("scroll-down").addEventListener("click", function () {
+   document.getElementById("scroll-down").addEventListener("click", function () {
         window.scrollTo({
             top: document.body.scrollHeight,
             behavior: "smooth"
         });
-    });*/
-</script>--->
+    });
+</script>
 
 </body>
 </html>

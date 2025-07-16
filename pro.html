@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin | Mobile Zone</title>
+  <title>User | Mobile Zone</title>
   <link rel="stylesheet" href="ggg.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.6.0/css/fontawesome.min.css" integrity="sha384-NvKbDTEnL+A8F/AA5Tc5kmMLSJHUO868P+lDtTpJIeQdGYaUIuLr4lVGOEA1OcMy" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
@@ -48,19 +48,17 @@
 
     </div>
    </header>
-      <section id="products">
-    <section class="product">
+<section id="products">
            <div class="section-content">
     <h2 class="section-title"><i class="fas fa-box-open"></i> Our Products</h2>
     
     <div class="filters-row">
         <div class="brand-select">
-            <select id="brandFilter" onchange="filterBrand(this.value)">
+            <select id="brandFilter" onchange="filterAndScroll(this.value)">
                 <option value="all">All Brands</option>
                 <option value="iphone">iPhone</option>
                 <option value="samsung">Samsung</option>
                 <option value="vivo">Vivo</option>
-                <option value="oppo">Oppo</option>
                 <option value="xiaomi">Xiaomi</option>
             </select>
         </div>
@@ -71,7 +69,7 @@
     </div>
 </div>
 
-    <section class="product" data-brand="iphone">
+    <section class="product" data-brand="iphone" id="iphone">
         <div class="contain flex">
             <div class="left">
                 <div class="main-image">
@@ -119,14 +117,17 @@
                 </div>
                 <h5>Number</h5>
                 <div class="add flex1"><span>-</span><label>1</label><span>+</span></div>
-                <button>Add To Cart</button>
+                <form action="add-to-cart.html" method="get">
+                <button type="submit">Add To Cart</button>
+                </form>
+
             </div>
         </div>
     </section>
 
     <!-- Vivo Section --->
 
-    <section class="product" data-brand="vivo">
+    <section class="product" data-brand="vivo" id="vivo">
         <div class="contain flex">
             <div class="left">
                 <div class="main-image">
@@ -177,14 +178,17 @@
                 </div>
                 <h5>Number</h5>
                 <div class="add flex1"><span>-</span><label>1</label><span>+</span></div>
-                <button>Add To Cart</button>
+                <form action="add-to-cart.html" method="get">
+                <button type="submit">Add To Cart</button>
+                </form>
+
             </div>
         </div>
     </section>
 
-    <!-- Samsung Section -
+    <!-- Samsung Section ------>
 
-    <section class="product" data-brand="samsung">
+    <section class="product" data-brand="samsung" id="samsung">
         <div class="contain flex">
             <div class="left">
                 <div class="main-image">
@@ -212,7 +216,7 @@
                     </tr>
                     <tr>
                         <td>Display Size</td>
-                        <td>6.8" QHD+Dynamic quality<td>
+                        <td>6.8" QHD+Dynamic quality</tr>
                     </tr>
                     <tr>
                         <td>Battery</td>
@@ -235,14 +239,17 @@
                 </div>
                 <h5>Number</h5>
                 <div class="add flex1"><span>-</span><label>1</label><span>+</span></div>
-                <button>Add To Cart</button>
+                <form action="add-to-cart.html" method="get">
+                <button type="submit">Add To Cart</button>
+                </form>
+
             </div>
         </div>
     </section>
 
-    Xiaomi Section -
+   <!----- Xiaomi Section ----->
 
-    <section class="product" data-brand="xiaomi">
+    <section class="product" data-brand="xiaomi" id="xiaomi">
         <div class="contain flex">
             <div class="left">
                 <div class="main-image">
@@ -288,15 +295,17 @@
                 <h5>Capacity</h5>
                 <div class="capacity-options">
                     <label><input type="radio" name="capacity4" value="128GB" checked data-price="4,130,000" onchange="updatePrice(this)"> 128GB</label>
-                    <label><input type="radio" name="capacity4" value="128GB" checked data-price="2,690,000" onchange="updatePrice(this)">256GB</label>
-                    <label><input type="radio" name="capacity4" value="256GB" data-price="2,890,000" onchange="updatePrice(this)"> 512GB</label>
+                    <label><input type="radio" name="capacity4" value="256GB" checked data-price="2,690,000" onchange="updatePrice(this)">256GB</label>
+                    <label><input type="radio" name="capacity4" value="528GB" data-price="2,890,000" onchange="updatePrice(this)"> 512GB</label>
                 </div>
                 <h5>Number</h5>
                 <div class="add flex1"><span>-</span><label>1</label><span>+</span></div>
-                <button>Add To Cart</button>
+                <form action="add-to-cart.html" method="get">
+                <button type="submit">Add To Cart</button>
+                </form>
             </div>
         </div>
-    </section>-->
+    </section>
 
     <!-- JavaScript -->
 
@@ -336,9 +345,10 @@ function toggleSidebar() {
 }
 </script>
 
-  <script>
-  function filterBrand(brand) {
+ <script>
+  function filterAndScroll(brand) {
     const products = document.querySelectorAll('.product');
+
     products.forEach(product => {
       const currentBrand = product.getAttribute('data-brand');
       if (brand === 'all' || currentBrand === brand) {
@@ -347,7 +357,70 @@ function toggleSidebar() {
         product.style.display = 'none';
       }
     });
+
+    if (brand !== 'all') {
+      const section = document.getElementById(brand);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   }
+</script>
+
+<script>
+  document.querySelectorAll('.add').forEach(container => {
+    const label = container.querySelector('label');
+    let count = 1;
+
+    container.children[0].addEventListener('click', () => {
+      if (count > 1) count--;
+      label.textContent = count;
+    });
+
+    container.children[2].addEventListener('click', () => {
+      count++;
+      label.textContent = count;
+    });
+  });
+</script>
+<div id="scroll-buttons">
+    <button id="scroll-up" title="Go to Top"><i class="fas fa-chevron-up"></i></button>
+   
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+<script>
+    // Scroll to top
+    document.getElementById("scroll-up").addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+    </script>
+    <script>
+    document.querySelector('.search-input').addEventListener('input', function () {
+  const searchTerm = this.value.toLowerCase().replace(/,/g, '').trim();
+  const products = document.querySelectorAll('.product');
+
+  products.forEach(product => {
+    const productName = product.querySelector('h3').textContent.toLowerCase();
+    // Get price text and remove commas and spaces for easy match
+    const priceText = product.querySelector('.price').textContent.replace(/,/g, '').trim();
+
+    if (
+      productName.includes(searchTerm) ||
+      priceText.includes(searchTerm)
+    ) {
+      product.style.display = 'block';
+    } else {
+      product.style.display = 'none';
+    }
+  });
+});
+
 </script>
 </body>
 </html>
